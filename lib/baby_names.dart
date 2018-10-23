@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp();
+  MyApp();
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Baby Names',
-      home: const MyHomePage(title: 'Baby Name Votes'),
+      home: MyHomePage(title: 'Baby Name Votes'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text(title)),
-      body: new StreamBuilder(
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: StreamBuilder(
           stream: Firestore.instance.collection('baby').snapshots(),
           builder: (context, snapshot) {
-            if (!snapshot.hasData) return const Text('Loading...');
-            return new ListView.builder(
+            if (!snapshot.hasData) return Text('Loading...');
+            return ListView.builder(
                 itemCount: snapshot.data.documents.length,
-                padding: const EdgeInsets.only(top: 10.0),
+                padding: EdgeInsets.only(top: 10.0),
                 itemExtent: 55.0,
                 itemBuilder: (context, index) =>
                     _buildListItems(context, snapshot.data.documents[index]));
@@ -39,18 +39,18 @@ class MyHomePage extends StatelessWidget {
   }
 
   Widget _buildListItems(BuildContext context, document) {
-    return new ListTile(
-      key: new ValueKey(document.documentID),
-      title: new Container(
-        decoration: new BoxDecoration(
-          border: new Border.all(color: Colors.white),
-          borderRadius: new BorderRadius.circular(5.0),
+    return ListTile(
+      key: ValueKey(document.documentID),
+      title: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          borderRadius: BorderRadius.circular(5.0),
         ),
-        padding: const EdgeInsets.all(10.0),
-        child: new Row(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
           children: <Widget>[
-            new Expanded(child: new Text(document['name'])),
-            new Text(document['votes'].toString()),
+            Expanded(child: Text(document['name'])),
+            Text(document['votes'].toString()),
           ],
         ),
       ),

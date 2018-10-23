@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(new FadeAppTest());
+  runApp(FadeAppTest());
 }
 
 class FadeAppTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: "Fade App",
       theme: ThemeData.dark(),
-      home: new FadeTest(title: 'Fade Demo'),
+      home: FadeTest(title: 'Fade Demo'),
     );
   }
 }
@@ -18,10 +18,10 @@ class FadeAppTest extends StatelessWidget {
 class FadeTest extends StatefulWidget {
   final String title;
 
-  FadeTest({Key key, this.title}) :super(key: key);
+  FadeTest({Key key, this.title}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => new _FadeTestState();
+  State<StatefulWidget> createState() => _FadeTestState();
 }
 
 class _FadeTestState extends State<FadeTest> with TickerProviderStateMixin {
@@ -31,37 +31,38 @@ class _FadeTestState extends State<FadeTest> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller = new AnimationController(
-        duration: const Duration(milliseconds: 2000), vsync: this);
-    curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    controller = AnimationController(
+        duration: Duration(milliseconds: 2000), vsync: this);
+    curve = CurvedAnimation(parent: controller, curve: Curves.easeIn);
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
-      body: new Center(
-        child: new Container(
-            child: new FadeTransition(opacity: curve,
-                child: new FlutterLogo(size: 100.0,))
-        ),
+      body: Center(
+        child: Container(
+            child: FadeTransition(
+                opacity: curve,
+                child: FlutterLogo(
+                  size: 100.0,
+                ))),
       ),
-      floatingActionButton: new FloatingActionButton(onPressed: () {
+      floatingActionButton: FloatingActionButton(onPressed: () {
         controller.forward();
       }),
     );
   }
 }
 
-
 class SampleApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new SampleAppPage(),
+    return MaterialApp(
+      home: SampleAppPage(),
     );
   }
 }
@@ -70,7 +71,7 @@ class SampleAppPage extends StatefulWidget {
   SampleAppPage({Key key}) : super(key: key);
 
   @override
-  _SampleAppPageState createState() => new _SampleAppPageState();
+  _SampleAppPageState createState() => _SampleAppPageState();
 }
 
 class _SampleAppPageState extends State<SampleAppPage> {
@@ -85,26 +86,25 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
   _getToggleChild() {
     if (toggle) {
-      return new Text('Toggle One');
+      return Text('Toggle One');
     } else {
-      return new MaterialButton(
-          onPressed: () {}, child: new Text('Toggle Two'));
+      return MaterialButton(onPressed: () {}, child: Text('Toggle Two'));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Sample App"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Sample App"),
       ),
-      body: new Center(
+      body: Center(
         child: _getToggleChild(),
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: _toggle,
         tooltip: 'Update Text',
-        child: new Icon(Icons.update),
+        child: Icon(Icons.update),
       ),
     );
   }
