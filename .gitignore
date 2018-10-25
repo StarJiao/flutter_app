@@ -71,5 +71,5 @@ build/
 .gradle
 **/ios/Podfile
 **/ios/Runner.xcworkspace
-**/ios/Flutter/**.xcconfig
+**/ios/Flutter/Generated.xcconfig
 /gen

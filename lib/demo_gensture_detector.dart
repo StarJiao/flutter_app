@@ -26,6 +26,7 @@ class MyButton extends StatelessWidget {
           child: Text(
             'Engage',
             style: new TextStyle(
+                color: Colors.black,
                 decoration: TextDecoration.underline,
                 decorationStyle: TextDecorationStyle.wavy,
                 decorationColor: Colors.red),
