@@ -1,36 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/custom/circle_ends_progress_bar.dart';
 
 void main() {
   runApp(MaterialApp(
     title: "gesture detector",
-    home: MyButton(),
+    home: MyScaffold(),
   ));
 }
 
-class MyButton extends StatelessWidget {
+class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('MyButton was tapped!');
-      },
-      child: Container(
-        height: 36.0,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.0),
-          color: Colors.lightGreen[500],
+    return Scaffold(
+        appBar: new AppBar(
+          leading: BackButton(),
+          title: new Text("Custom Title"),
         ),
-        child: Center(
-          child: Text(
-            'Engage',
-            style: new TextStyle(
-                color: Colors.black,
-                decoration: TextDecoration.underline,
-                decorationStyle: TextDecorationStyle.wavy,
-                decorationColor: Colors.red),
-          ),
-        ),
-      ),
-    );
+        body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: new CircleEndsProgressBar(
+              progress: 45.0,
+            )));
   }
 }
