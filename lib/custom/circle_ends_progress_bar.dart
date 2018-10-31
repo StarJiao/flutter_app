@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
+///[progress] is limited [0,1] by double
 class CircleEndsProgressBar extends StatelessWidget {
   const CircleEndsProgressBar(
       {Key key,
-        @required this.progress,
-        this.max: 100.0,
-        this.borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-        this.height: 10.0,
-        this.backgroundColor,
-        this.foregroundColor})
+      @required this.progress,
+      this.max: 1.0,
+      this.borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+      this.height: 10.0,
+      this.backgroundColor,
+      this.foregroundColor})
       : super(key: key);
 
   final double progress;
@@ -34,7 +35,7 @@ class CircleEndsProgressBar extends StatelessWidget {
     double progressTemp;
     double maxTemp;
     if (max < 0.0) {
-      maxTemp = 100.0;
+      maxTemp = 1.0;
     } else {
       maxTemp = max;
     }
