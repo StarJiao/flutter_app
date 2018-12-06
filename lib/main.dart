@@ -1,16 +1,107 @@
-import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(CustomApp());
 
-class CustomApp extends StatelessWidget {
+class CustomApp extends StatefulWidget {
+  @override
+  CustomAppState createState() {
+    return new CustomAppState();
+  }
+}
+
+class CustomAppState extends State<CustomApp> {
   @override
   Widget build(BuildContext context) {
+    print("build");
     return MaterialApp(
       title: 'Startup Name Generator',
       theme: ThemeData.dark(),
-      home: RandomWords(),
+      home: _buildBody(),
     );
+  }
+
+  _buildBody() {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 1,
+          child: DefaultTextStyle(
+            style: const TextStyle(
+              color: CupertinoColors.black,
+              fontSize: 22.0,
+            ),
+            child: GestureDetector(
+              // Blocks taps from propagating to the modal sheet and popping.
+              onTap: () {},
+              child: SafeArea(
+                top: false,
+                child: CupertinoDatePicker(
+                  use24hFormat: true,
+                  mode: CupertinoDatePickerMode.time,
+                  initialDateTime: DateTime.now(),
+                  onDateTimeChanged: (DateTime newDateTime) {},
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 3,
+          child: Text("asdf"),
+        ),
+      ],
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print("initState");
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    print("debugFillProperties");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("deactivate");
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+    print("setState");
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    print("reassemble");
+  }
+
+  @override
+  void didUpdateWidget(CustomApp oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget");
   }
 }
 
@@ -29,9 +120,7 @@ class RandomWordsState extends State<RandomWords> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Startup Name Generator'),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)
-        ],
+        actions: <Widget>[IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)],
       ),
       body: _buildSuggestions(),
     );
@@ -84,8 +173,7 @@ class RandomWordsState extends State<RandomWords> {
           ),
         );
       });
-      final dividedTiles =
-          ListTile.divideTiles(context: context, tiles: tiles).toList();
+      final dividedTiles = ListTile.divideTiles(context: context, tiles: tiles).toList();
       return Scaffold(
         appBar: AppBar(
           title: Text('Saved Suggestions'),

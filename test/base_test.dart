@@ -1,3 +1,5 @@
+import 'package:hex/hex.dart';
+
 void main() {
   var names = ["hello", "world"];
   for (var name in names) {
@@ -19,8 +21,13 @@ void main() {
   print((dou * 100).floor());
   print(int.parse((dou.floor() * 100).toString()));
 
-  print((dou*100).floor().toDouble());
+  print((dou * 100).floor().toDouble());
 
+  print(HEX.encode([255]));
+
+  ///  print(HEX.encode([-255]));//error
+  ///  print(HEX.encode([256]));//error
+  ///  print(HEX.encode([257]));//error
 }
 
 int add(int a, int b) {
