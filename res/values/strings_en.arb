@@ -1,4 +1,7 @@
 {
   "common_key": "Common Key",
-  "key_only_english": "words only in english"
+  "key_only_english": "words only in english",
+  "variable": "this is a variable : $something and $someOther",
+  "adductor_stretch_in_standing": "站姿内收肌拉伸",
+  "adductor_stretch_in_standing_desc": "单膝弯曲，将身体重量转移到这条腿上。感受大腿内侧内收肌的拉伸。保持背部直立，不要弯腰超过膝盖前方。"
 }

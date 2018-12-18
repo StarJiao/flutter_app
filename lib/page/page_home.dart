@@ -16,7 +16,14 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Text(S.of(context).key_only_english),
             ),
-            Text(S.of(context).common_key),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(S.of(context).common_key),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(S.of(context).variable("one", "another")),
+            ),
           ],
         ),
       ),
