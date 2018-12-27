@@ -1,43 +1,18 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/custom/app_bar.dart';
 import 'package:flutter_app/util/youtube_data_provider.dart';
 import 'package:video_player/video_player.dart';
 
-class YoutubePage extends StatefulWidget {
+class YoutubePage extends StatelessWidget {
   static final String name = 'Youtobe';
-  @override
-  YoutubePageState createState() {
-    return new YoutubePageState();
-  }
-}
-
-class YoutubePageState extends State<YoutubePage> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: false,
-        title: Text(YoutubePage.name),
-        leading: IconButton(
-          color: Colors.black,
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-            size: 20,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      appBar: SimpleAppBar(YoutubePage.name, context),
       body: _buildBody(),
     );
   }

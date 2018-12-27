@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/custom/app_bar.dart';
 
 class WeightLayoutPage extends StatelessWidget {
   static final String name = "WeightLayoutPage";
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Column(
+    return Scaffold(
+      appBar: SimpleAppBar(name, context),
+      body: Column(
         children: [
           Expanded(
             child: Row(

@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/custom/app_bar.dart';
 
 class ImageRotatePage extends StatefulWidget {
   static final String name = 'ImageRotatePage';
@@ -12,30 +15,48 @@ class ImageRotatePage extends StatefulWidget {
 
 class _ImageRotateState extends State<ImageRotatePage> with SingleTickerProviderStateMixin {
   AnimationController animationController;
-  bool isRunning = true;
+  double current = 0;
 
   @override
   void initState() {
     super.initState();
     animationController = new AnimationController(
+      upperBound: 2 * pi,
       vsync: this,
-      duration: new Duration(seconds: 8),
-    );
+      duration: new Duration(seconds: 5),
+    )..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          print('complete');
+          animationController.repeat();
+        } else if (status == AnimationStatus.forward) {
+          print('forward');
+        } else if (status == AnimationStatus.reverse) {
+          print('reverse');
+        } else if (status == AnimationStatus.dismissed) {
+          print('dismiss');
+        }
+      });
 
     animationController.repeat();
   }
 
   @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: SimpleAppBar(ImageRotatePage.name, context),
       body: GestureDetector(
         onTap: () {
-          if (isRunning) {
-            isRunning = false;
+          if (animationController.isAnimating) {
             animationController.stop();
+            current = animationController.value;
           } else {
-            isRunning = true;
-            animationController.repeat();
+            animationController.forward(from: current);
           }
         },
         child: new Container(
@@ -45,6 +66,7 @@ class _ImageRotateState extends State<ImageRotatePage> with SingleTickerProvider
             animation: animationController,
             child: Icon(
               Icons.home,
+              color: Colors.red,
               size: 300,
             ),
             builder: (BuildContext context, Widget _widget) {

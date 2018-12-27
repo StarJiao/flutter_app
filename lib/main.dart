@@ -27,7 +27,7 @@ class DemoApp extends StatelessWidget {
       localizationsDelegates: list,
       navigatorObservers: [AppNavigatorObserver()],
       supportedLocales: S.delegate.supportedLocales,
-      onUnknownRoute: (settings) => new MaterialPageRoute(builder: (BuildContext context) => new UnknownPage(settings.name)),
+      onUnknownRoute: (settings) => new MaterialPageRoute(builder: (context) => new UnknownPage(settings.name)),
     );
   }
 }
