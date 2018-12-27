@@ -25,11 +25,12 @@ class YoutubePageState extends State<YoutubePage> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: false,
+        title: Text(YoutubePage.name),
         leading: IconButton(
           color: Colors.black,
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Theme.of(context).buttonColor,
+            color: Colors.white,
             size: 20,
           ),
           onPressed: () {
@@ -76,12 +77,13 @@ class MotivationItemState extends State<MotivationItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 9 / 16 - 5,
+      height: MediaQuery.of(context).size.width * 9 / 16,
       margin: EdgeInsets.only(bottom: 10),
       color: Colors.black45,
       child: url?.isNotEmpty ?? false
           ? Chewie(
               new VideoPlayerController.network(url),
+              autoInitialize: true,
               aspectRatio: 16 / 9,
               autoPlay: false,
               looping: true,
