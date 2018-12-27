@@ -24,6 +24,9 @@ dependencies:
   path_provider: ^0.4.1
   shared_preferences: ^0.4.2
   sqflite: ^0.12.2
+  chewie: ^0.8.0
+  youtube_extractor: ^1.0.1
+  event_bus: ^1.0.1
 
   flutter_localizations:
     sdk: flutter

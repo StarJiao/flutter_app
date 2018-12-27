@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-void main() {
-  runApp(WeightLayoutApp());
-}
+class WeightLayoutPage extends StatelessWidget {
+  static final String name = "WeightLayoutPage";
 
-class WeightLayoutApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => WeightState();
-}
-
-class WeightState extends State<WeightLayoutApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,8 +33,7 @@ class WeightState extends State<WeightLayoutApp> {
                           Text(
                             "yrj",
                             textAlign: TextAlign.right,
-                            style: TextStyle(
-                                fontSize: 24.0, color: Colors.red),
+                            style: TextStyle(fontSize: 24.0, color: Colors.red),
                           ),
                           Text(
                             "lglo",

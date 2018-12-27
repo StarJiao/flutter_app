@@ -1,27 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(AnimDemo());
-}
+class ImageRotatePage extends StatefulWidget {
+  static final String name = 'ImageRotatePage';
 
-class AnimDemo extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: ImageRotate(),
-      ),
-    );
+  State<StatefulWidget> createState() {
+    return _ImageRotateState();
   }
 }
 
-class ImageRotate extends StatefulWidget {
-  @override
-  _ImageRotateState createState() => new _ImageRotateState();
-}
-
-class _ImageRotateState extends State<ImageRotate> with SingleTickerProviderStateMixin {
+class _ImageRotateState extends State<ImageRotatePage> with SingleTickerProviderStateMixin {
   AnimationController animationController;
   bool isRunning = true;
 
@@ -38,31 +27,33 @@ class _ImageRotateState extends State<ImageRotate> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (isRunning) {
-          isRunning = false;
-          animationController.stop();
-        } else {
-          isRunning = true;
-          animationController.repeat();
-        }
-      },
-      child: new Container(
-        alignment: Alignment.center,
-        color: Colors.white,
-        child: new AnimatedBuilder(
-          animation: animationController,
-          child: Icon(
-            Icons.home,
-            size: 300,
+    return Scaffold(
+      body: GestureDetector(
+        onTap: () {
+          if (isRunning) {
+            isRunning = false;
+            animationController.stop();
+          } else {
+            isRunning = true;
+            animationController.repeat();
+          }
+        },
+        child: new Container(
+          alignment: Alignment.center,
+          color: Colors.white,
+          child: new AnimatedBuilder(
+            animation: animationController,
+            child: Icon(
+              Icons.home,
+              size: 300,
+            ),
+            builder: (BuildContext context, Widget _widget) {
+              return new Transform.rotate(
+                angle: animationController.value,
+                child: _widget,
+              );
+            },
           ),
-          builder: (BuildContext context, Widget _widget) {
-            return new Transform.rotate(
-              angle: animationController.value,
-              child: _widget,
-            );
-          },
         ),
       ),
     );

@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(
-    MaterialApp(title: "launch", theme: ThemeData.dark(), home: Launcher()),
-  );
-}
-
 class Launcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,5 +23,4 @@ class Launcher extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
-
 }
