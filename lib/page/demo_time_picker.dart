@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomTImePIckerDemo extends StatelessWidget {
+class TimePickerDemo extends StatelessWidget {
+  static final String name = 'TimePickerDemo';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

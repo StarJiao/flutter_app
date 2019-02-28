@@ -5,9 +5,8 @@
 // are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/hello_flutter.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:flutter_app/page/demo_hello.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RandomWords extends StatefulWidget {
+  static final String name = 'RandomWords';
   @override
   createState() => RandomWordsState();
 }

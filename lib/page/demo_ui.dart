@@ -1,38 +1,19 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(FadeAppTest());
-}
-
-class FadeAppTest extends StatelessWidget {
+class FadeDemo extends StatefulWidget {
+  static final String name = 'FadeDemo';
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Fade App",
-      theme: ThemeData.dark(),
-      home: FadeTest(title: 'Fade Demo'),
-    );
-  }
+  State<StatefulWidget> createState() => _FadeDemoState();
 }
 
-class FadeTest extends StatefulWidget {
-  final String title;
-
-  FadeTest({Key key, this.title}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _FadeTestState();
-}
-
-class _FadeTestState extends State<FadeTest> with TickerProviderStateMixin {
+class _FadeDemoState extends State<FadeDemo> with TickerProviderStateMixin {
   AnimationController controller;
   CurvedAnimation curve;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-        duration: Duration(milliseconds: 2000), vsync: this);
+    controller = AnimationController(duration: Duration(milliseconds: 2000), vsync: this);
     curve = CurvedAnimation(parent: controller, curve: Curves.easeIn);
   }
 
@@ -40,7 +21,7 @@ class _FadeTestState extends State<FadeTest> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("fade demo"),
       ),
       body: Center(
         child: Container(
@@ -53,59 +34,6 @@ class _FadeTestState extends State<FadeTest> with TickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(onPressed: () {
         controller.forward();
       }),
-    );
-  }
-}
-
-class SampleApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SampleAppPage(),
-    );
-  }
-}
-
-class SampleAppPage extends StatefulWidget {
-  SampleAppPage({Key key}) : super(key: key);
-
-  @override
-  _SampleAppPageState createState() => _SampleAppPageState();
-}
-
-class _SampleAppPageState extends State<SampleAppPage> {
-  // Default value for toggle
-  bool toggle = true;
-
-  void _toggle() {
-    setState(() {
-      toggle = !toggle;
-    });
-  }
-
-  _getToggleChild() {
-    if (toggle) {
-      return Text('Toggle One');
-    } else {
-      return MaterialButton(onPressed: () {}, child: Text('Toggle Two'));
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Sample App"),
-      ),
-      body: Center(
-        child: _getToggleChild(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _toggle,
-        tooltip: 'Update Text',
-        child: Icon(Icons.update),
-      ),
     );
   }
 }
